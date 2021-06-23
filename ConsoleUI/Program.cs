@@ -57,16 +57,19 @@ namespace ConsoleUI
         }
         private static int GetRaffleNumber(Dictionary<int, string> people)
         {
-            raffleNumber = GenerateRandomNumber(min, max);
-            while (!people.ContainsKey(raffleNumber))
-            {
-                raffleNumber = GenerateRandomNumber(min, max);
-            }
-            return raffleNumber;
+            List<int> newList = people.Keys.ToList();
+            int num = rdm.Next(newList.Count);
+            return newList[num];
+
+            //raffleNumber = GenerateRandomNumber(min, max);
+            //while (!people.ContainsKey(raffleNumber))
+            //{
+            //    raffleNumber = GenerateRandomNumber(min, max);
+            //}
+            //return raffleNumber;
         }
         private static void PrintWinner()
         {
-            Console.Clear();
             int winnerNumber = GetRaffleNumber(guests);
             string winnerName = guests[winnerNumber];
             Console.WriteLine($"The Winner is: {winnerName} with the #{winnerNumber}!");
@@ -175,9 +178,9 @@ namespace ConsoleUI
         {
             Console.WriteLine("Welcome to the Party!!");
             GetUserInfo();
+            MultiLineAnimation();
             PrintGuestsName();
             GetRaffleNumber(guests);
-            MultiLineAnimation();
             PrintWinner();
             Console.ReadLine();
         }
