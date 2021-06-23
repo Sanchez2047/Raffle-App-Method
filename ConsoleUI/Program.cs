@@ -9,7 +9,6 @@ namespace ConsoleUI
 {
     class Program
     {
-
         private static Dictionary<int, string> guests = new Dictionary<int, string>();
         private static int min = 1000;
         private static int max = 9999;
@@ -67,76 +66,120 @@ namespace ConsoleUI
         }
         private static void PrintWinner()
         {
+            Console.Clear();
             int winnerNumber = GetRaffleNumber(guests);
             string winnerName = guests[winnerNumber];
             Console.WriteLine($"The Winner is: {winnerName} with the #{winnerNumber}!");
         }
+        static void MultiLineAnimation() // Credit: https://www.michalbialecki.com/2018/05/25/how-to-make-you-console-app-look-cool/
+        {
 
+            var counter = 0;
+            for (int i = 0; i < 30; i++)
+            {
+                Console.Clear();
 
+                switch (counter % 9)
+                {
+                    case 0:
+                        {
+                            Console.WriteLine("         ╔═══          ");
+                            Console.WriteLine("         ║             ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            break;
+                        };
+                    case 1:
+                        {
+                            Console.WriteLine("           ═════       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            break;
+                        };
+                    case 2:
+                        {
+                            Console.WriteLine("               ══════  ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            break;
+                        };
+                    case 3:
+                        {
+                            Console.WriteLine("                    ══╗");
+                            Console.WriteLine("                      ║");
+                            Console.WriteLine("                      ║");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            break;
+                        };
+                    case 4:
+                        {
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                      ║");
+                            Console.WriteLine("                      ║");
+                            Console.WriteLine("                    ══╝");
+                            break;
+                        };
+                    case 5:
+                        {
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                ══════ "); 
+                            break;
+                        };
+                    case 6:
+                        {
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("           ═══════     ");
+                            break;
+                        };
+                    case 7:
+                        {
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("         ╚═══          ");
+                            break;
+                        };
+                    case 8:
+                        {
+                            Console.WriteLine("                       ");
+                            Console.WriteLine("         ║             ");
+                            Console.WriteLine("         ║             ");
+                            Console.WriteLine("         ║             ");
+                            Console.WriteLine("                       ");
+                            break;
+                        };
+
+                }
+
+                counter++;
+                Thread.Sleep(200);
+
+            }
+
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Party!!");
             GetUserInfo();
             PrintGuestsName();
             GetRaffleNumber(guests);
+            MultiLineAnimation();
             PrintWinner();
             Console.ReadLine();
-
-        }
-
-        //Start writing your code here
-
-
-
-
-
-
-        static void MultiLineAnimation() // Credit: https://www.michalbialecki.com/2018/05/25/how-to-make-you-console-app-look-cool/
-        {
-            var counter = 0;
-            for (int i = 0; i < 30; i++)
-            {
-                Console.Clear();
-
-                switch (counter % 4)
-                {
-                    case 0:
-                        {
-                            Console.WriteLine("         ╔════╤╤╤╤════╗");
-                            Console.WriteLine("         ║    │││ \\   ║");
-                            Console.WriteLine("         ║    │││  O  ║");
-                            Console.WriteLine("         ║    OOO     ║");
-                            break;
-                        };
-                    case 1:
-                        {
-                            Console.WriteLine("         ╔════╤╤╤╤════╗");
-                            Console.WriteLine("         ║    ││││    ║");
-                            Console.WriteLine("         ║    ││││    ║");
-                            Console.WriteLine("         ║    OOOO    ║");
-                            break;
-                        };
-                    case 2:
-                        {
-                            Console.WriteLine("         ╔════╤╤╤╤════╗");
-                            Console.WriteLine("         ║   / │││    ║");
-                            Console.WriteLine("         ║  O  │││    ║");
-                            Console.WriteLine("         ║     OOO    ║");
-                            break;
-                        };
-                    case 3:
-                        {
-                            Console.WriteLine("         ╔════╤╤╤╤════╗");
-                            Console.WriteLine("         ║    ││││    ║");
-                            Console.WriteLine("         ║    ││││    ║");
-                            Console.WriteLine("         ║    OOOO    ║");
-                            break;
-                        };
-                }
-
-                counter++;
-                Thread.Sleep(200);
-            }
         }
     }
 }
