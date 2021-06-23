@@ -17,17 +17,27 @@ namespace ConsoleUI
         private static Random rdm = new Random(); 
         private static string GetUserInput(string input)
         {
-            Console.WriteLine("Please Enter Your Name: ");
+            Console.WriteLine(input);
             string name = Console.ReadLine();
             return name;
+        }
+        private static void GetUserInfo()
+        {
+            string otherGuest;
+            do
+            {
+                string name = GetUserInput("Please Enter Your Name: ");
+                otherGuest = GetUserInput("Do you want to add another?").ToLower();
+            } 
+            while(otherGuest == "yes");
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the Party!!");
             GetUserInfo();
-            PrintGuestsName();
-            PrintWinner();
+            //PrintGuestsName();
+            //PrintWinner();
 
         }
 
