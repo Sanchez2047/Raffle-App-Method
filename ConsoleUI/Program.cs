@@ -13,10 +13,17 @@ namespace ConsoleUI
         {
 
 
+
+
         }
 
         //Start writing your code here
 
+        private static Dictionary<int, string> guests = new Dictionary<int, string>();
+        private static int min = 1000;
+        private static int max = 9999;
+        private static int raffleNumber;
+        private static Random rdm = new Random(); 
 
 
 
