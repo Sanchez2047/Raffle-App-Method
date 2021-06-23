@@ -9,21 +9,30 @@ namespace ConsoleUI
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-
-
-
-
-        }
-
-        //Start writing your code here
 
         private static Dictionary<int, string> guests = new Dictionary<int, string>();
         private static int min = 1000;
         private static int max = 9999;
         private static int raffleNumber;
         private static Random rdm = new Random(); 
+        private static string GetUserInput(string input)
+        {
+            Console.WriteLine("Please Enter Your Name: ");
+            string name = Console.ReadLine();
+            return name;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to the Party!!");
+            GetUserInfo();
+            PrintGuestsName();
+            PrintWinner();
+
+        }
+
+        //Start writing your code here
+
 
 
 
