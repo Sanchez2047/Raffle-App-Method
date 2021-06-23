@@ -25,6 +25,10 @@ namespace ConsoleUI
         {
             return rdm.Next(min, max);
         }
+        private static void AddGuestsInRaffle(int raffleNumber, string name)
+        {
+            guests.Add(raffleNumber,name);
+        }
         private static void GetUserInfo()
         {
             string otherGuest;
@@ -35,11 +39,13 @@ namespace ConsoleUI
                 {
                     name = GetUserInput("Please Enter Your Name: ");
                 }
+                raffleNumber = GenerateRandomNumber(min, max);
+                AddGuestsInRaffle(raffleNumber, name);
                 otherGuest = GetUserInput("Do you want to add another?").ToLower();
             } 
             while(otherGuest == "yes");
 
-            int num1 = GenerateRandomNumber(min, max);
+
         }
 
 
@@ -47,6 +53,7 @@ namespace ConsoleUI
         {
             Console.WriteLine("Welcome to the Party!!");
             GetUserInfo();
+          
             //PrintGuestsName();
             //PrintWinner();
 
