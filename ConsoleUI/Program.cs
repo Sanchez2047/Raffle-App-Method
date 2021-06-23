@@ -21,16 +21,27 @@ namespace ConsoleUI
             string name = Console.ReadLine();
             return name;
         }
+        private static int GenerateRandomNumber(int min, int max)
+        {
+            return rdm.Next(min, max);
+        }
         private static void GetUserInfo()
         {
             string otherGuest;
             do
             {
                 string name = GetUserInput("Please Enter Your Name: ");
+                while (name == "")
+                {
+                    name = GetUserInput("Please Enter Your Name: ");
+                }
                 otherGuest = GetUserInput("Do you want to add another?").ToLower();
             } 
             while(otherGuest == "yes");
+
+            int num1 = GenerateRandomNumber(min, max);
         }
+
 
         static void Main(string[] args)
         {
