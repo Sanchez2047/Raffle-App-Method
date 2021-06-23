@@ -61,12 +61,6 @@ namespace ConsoleUI
             int num = rdm.Next(newList.Count);
             return newList[num];
 
-            //raffleNumber = GenerateRandomNumber(min, max);
-            //while (!people.ContainsKey(raffleNumber))
-            //{
-            //    raffleNumber = GenerateRandomNumber(min, max);
-            //}
-            //return raffleNumber;
         }
         private static void PrintWinner()
         {
