@@ -40,12 +40,36 @@ namespace ConsoleUI
                     name = GetUserInput("Please Enter Your Name: ");
                 }
                 raffleNumber = GenerateRandomNumber(min, max);
+                while (guests.ContainsKey(raffleNumber))
+                {
+                    raffleNumber = GenerateRandomNumber(min, max);
+                }
                 AddGuestsInRaffle(raffleNumber, name);
                 otherGuest = GetUserInput("Do you want to add another?").ToLower();
             } 
             while(otherGuest == "yes");
-
-
+        }
+        private static void PrintGuestsName()
+        {
+            foreach(KeyValuePair<int,string> guest in guests)
+            {
+                Console.WriteLine($"{guest.Value}: {guest.Key}");
+            }
+        }
+        private static int GetRaffleNumber(Dictionary<int, string> people)
+        {
+            raffleNumber = GenerateRandomNumber(min, max);
+            while (!people.ContainsKey(raffleNumber))
+            {
+                raffleNumber = GenerateRandomNumber(min, max);
+            }
+            return raffleNumber;
+        }
+        private static void PrintWinner()
+        {
+            int winnerNumber = GetRaffleNumber(guests);
+            string winnerName = guests[winnerNumber];
+            Console.WriteLine($"The Winner is: {winnerName} with the #{winnerNumber}!");
         }
 
 
@@ -53,9 +77,10 @@ namespace ConsoleUI
         {
             Console.WriteLine("Welcome to the Party!!");
             GetUserInfo();
-          
-            //PrintGuestsName();
-            //PrintWinner();
+            PrintGuestsName();
+            GetRaffleNumber(guests);
+            PrintWinner();
+            Console.ReadLine();
 
         }
 
